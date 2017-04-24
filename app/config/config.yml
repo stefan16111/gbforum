@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: ~
     secret: '%secret%'
     router:
         resource: '%kernel.root_dir%/config/routing.yml'
@@ -45,7 +45,7 @@ doctrine:
         driver: pdo_mysql
         host: '%database_host%'
         port: '%database_port%'
-        dbname: '%database_name%'
+        dbname: 'gbforum'
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
@@ -68,3 +68,10 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "stefan16111@wp.pl"
+        sender_name: "gbforumMail"
