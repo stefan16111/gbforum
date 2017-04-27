@@ -3,11 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/gbforum/app/config/security.yml</file>
-            <file>file:/C:/wamp64/www/gbforum/app/AppKernel.php</file>
-            <file>file:/C:/wamp64/www/gbforum/app/config/routing.yml</file>
-            <file>file:/C:/wamp64/www/gbforum/app/config/config.yml</file>
-            <file>file:/C:/wamp64/www/gbforum/src/AppBundle/Entity/User.php</file>
+            <file>file:/C:/wamp64/www/gbforum/app/Resources/FOSUserBundle/views/layout.html.twig</file>
         </group>
     </open-files>
 </project-private>

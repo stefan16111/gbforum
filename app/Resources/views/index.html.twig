@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <nav class="nav_bar" >
+        <ul class="nav_links">
+            <li><a href="#home">Główna</a></li>
+            <li><a href="#news">Rekrutacja</a></li>
+            <li><a href="#news">O Nas</a></li>
+            <li><a href="#news">Regulamin</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Bulidy</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </li>
+            <li style="float:right"><a href="{{ path('fos_user_security_login')}} ">Zaloguj</a></li>
+        </ul>
+    </nav>
+
+    <div class="main_contaier">
+    </div>
+
+{% endblock %}
