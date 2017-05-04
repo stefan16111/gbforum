@@ -75,3 +75,7 @@ fos_user:
     from_email:
         address: "stefan16111@wp.pl"
         sender_name: "gbforumMail"
+    registration:
+        form:
+#            name: app_user_registration
+            type: AppBundle\Form\RegistrationType
