@@ -47,7 +47,7 @@ class Topic
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="topics")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
-    protected $category;
+    private $category;
 
     public function __construct() {
         $this->setDate(date_create(date("Y-m-d H:i:s")));

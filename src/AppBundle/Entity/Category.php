@@ -33,7 +33,7 @@ class Category
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Topic", mappedBy="category", cascade={"persist", "remove"}))
      */
-    protected $topics;
+    private $topics;
 
     public function __construct()
     {

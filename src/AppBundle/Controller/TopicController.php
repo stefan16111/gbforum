@@ -17,7 +17,7 @@ class TopicController extends Controller {
         $topic = new Topic();
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $topic->setPoster($user);
-        $form = $this->createForm(CategoryType::class, $topic);
+        $form = $this->createForm(TopicType::class, $topic);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -27,7 +27,7 @@ class TopicController extends Controller {
 
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('topic.html.twig', array(
+        return $this->render('newPost.html.twig', array(
                     'form' => $form->createView()
         ));
     }
@@ -37,7 +37,7 @@ class TopicController extends Controller {
      */
     public function showAllTopicFromCategoryAction(Request $request, $id)
     {
-        $allTopic = $this->getDoctrine()->getRepository('AppBundle:Category')->findOneBy(array('category' => $id));
+        $allTopic = $this->getDoctrine()->getRepository('AppBundle:Topic')->findOneBy(array('category' => $id));
         
         return $this->render('topic.html.twig',
                 array('topics' => $allTopic)
