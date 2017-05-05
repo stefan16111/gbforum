@@ -20,6 +20,14 @@
     </nav>
 
     <div class="main_contaier">
+
+        {% for category in categories %}
+            <ul class="category">  
+                <li>{{ category.name }}</li>
+            </ul> 
+        {% endfor %}
+
+
     </div>
 
 {% endblock %}

@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllAsc() {
+        return $this->findBy(array(), array('id' => 'ASC'));
+    }
+    
 }

@@ -13,8 +13,10 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $category = $this->getDoctrine()->getRepository('AppBundle:Category')->findAllAsc();
         
-        return $this->render('index.html.twig'
+        return $this->render('index.html.twig',
+                array('categories' => $category)
         );
     }
  

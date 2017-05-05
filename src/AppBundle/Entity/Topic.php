@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use AppBundle\Entity\Category;
 
 /**
  * Topic
@@ -41,6 +42,12 @@ class Topic
      * @ORM\JoinColumn(nullable=true, referencedColumnName="id")
      */
     private $poster;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="topics")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     */
+    protected $category;
 
     public function __construct() {
         $this->setDate(date_create(date("Y-m-d H:i:s")));
@@ -125,5 +132,29 @@ class Topic
     public function getPoster()
     {
         return $this->poster;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Topic
+     */
+    public function setCategory(\AppBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

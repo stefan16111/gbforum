@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Topic;
 
 /**
  * Category
@@ -27,8 +29,17 @@ class Category
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Topic", mappedBy="category", cascade={"persist", "remove"}))
+     */
+    protected $topics;
 
-
+    public function __construct()
+    {
+        $this->topics = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
