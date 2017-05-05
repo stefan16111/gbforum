@@ -27,7 +27,7 @@ class TopicController extends Controller {
 
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('newPost.html.twig', array(
+        return $this->render('new.html.twig', array(
                     'form' => $form->createView()
         ));
     }
@@ -37,7 +37,7 @@ class TopicController extends Controller {
      */
     public function showAllTopicFromCategoryAction(Request $request, $id)
     {
-        $allTopic = $this->getDoctrine()->getRepository('AppBundle:Topic')->findOneBy(array('category' => $id));
+        $allTopic = $this->getDoctrine()->getRepository('AppBundle:Topic')->findBy(array('category' => $id));
         
         return $this->render('topic.html.twig',
                 array('topics' => $allTopic)

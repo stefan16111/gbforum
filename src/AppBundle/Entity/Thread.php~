@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Thread
@@ -55,9 +56,21 @@ class Thread
      * @ORM\Column(name="updated", type="date", nullable=true)
      */
     private $updated;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Topic", inversedBy="threads")
+     * @ORM\JoinColumn(name="topic_id", referencedColumnName="id")
+     */
+    private $topic;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="thread")
+     */
+    private $posts;
 
     public function __construct() {
         $this->setDate(date_create(date("Y-m-d H:i:s")));
+        $this->posts = new ArrayCollection();    
     }
     /**
      * Get id

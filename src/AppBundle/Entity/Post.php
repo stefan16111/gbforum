@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use AppBundle\Entity\Thread;
 
 /**
  * Post
@@ -55,6 +56,12 @@ class Post
      * @ORM\Column(name="updated", type="date", nullable=true)
      */
     private $updated;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Thread", inversedBy="posts")
+     * @ORM\JoinColumn(name="thread_id", referencedColumnName="id")
+     */
+    private $thread;
 
     public function __construct() {
         $this->setDate(date_create(date("Y-m-d H:i:s")));
@@ -187,5 +194,29 @@ class Post
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set thread
+     *
+     * @param \AppBundle\Entity\Thread $thread
+     *
+     * @return Post
+     */
+    public function setThread(\AppBundle\Entity\Thread $thread = null)
+    {
+        $this->thread = $thread;
+
+        return $this;
+    }
+
+    /**
+     * Get thread
+     *
+     * @return \AppBundle\Entity\Thread
+     */
+    public function getThread()
+    {
+        return $this->thread;
     }
 }

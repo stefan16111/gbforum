@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use AppBundle\Entity\Category;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Topic
@@ -48,9 +49,15 @@ class Topic
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Thread", mappedBy="topic")
+     */
+    private $threads;
 
     public function __construct() {
         $this->setDate(date_create(date("Y-m-d H:i:s")));
+        $this->threads = new ArrayCollection();       
     }
     /**
      * Get id
@@ -156,5 +163,39 @@ class Topic
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add thread
+     *
+     * @param \AppBundle\Entity\Thread $thread
+     *
+     * @return Topic
+     */
+    public function addThread(\AppBundle\Entity\Thread $thread)
+    {
+        $this->threads[] = $thread;
+
+        return $this;
+    }
+
+    /**
+     * Remove thread
+     *
+     * @param \AppBundle\Entity\Thread $thread
+     */
+    public function removeThread(\AppBundle\Entity\Thread $thread)
+    {
+        $this->threads->removeElement($thread);
+    }
+
+    /**
+     * Get threads
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getThreads()
+    {
+        return $this->threads;
     }
 }

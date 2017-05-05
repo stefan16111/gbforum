@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Thread
@@ -55,9 +56,21 @@ class Thread
      * @ORM\Column(name="updated", type="date", nullable=true)
      */
     private $updated;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Topic", inversedBy="threads")
+     * @ORM\JoinColumn(name="topic_id", referencedColumnName="id")
+     */
+    private $topic;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="thread")
+     */
+    private $posts;
 
     public function __construct() {
         $this->setDate(date_create(date("Y-m-d H:i:s")));
+        $this->posts = new ArrayCollection();    
     }
     /**
      * Get id
@@ -187,5 +200,63 @@ class Thread
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set topic
+     *
+     * @param \AppBundle\Entity\Topic $topic
+     *
+     * @return Thread
+     */
+    public function setTopic(\AppBundle\Entity\Topic $topic = null)
+    {
+        $this->topic = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Get topic
+     *
+     * @return \AppBundle\Entity\Topic
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
+
+    /**
+     * Add post
+     *
+     * @param \AppBundle\Entity\Post $post
+     *
+     * @return Thread
+     */
+    public function addPost(\AppBundle\Entity\Post $post)
+    {
+        $this->posts[] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Remove post
+     *
+     * @param \AppBundle\Entity\Post $post
+     */
+    public function removePost(\AppBundle\Entity\Post $post)
+    {
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }

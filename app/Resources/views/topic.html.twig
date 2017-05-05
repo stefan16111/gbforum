@@ -1,10 +1,8 @@
 <div class="topic_contaier">
-
+    {{dump(topics)}}
     {% for topic in topics %}
         <ul class="topic">  
             <li>{{ topic.name }}</li>
         </ul> 
     {% endfor %}
-
-
 </div>

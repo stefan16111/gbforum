@@ -42,7 +42,7 @@ class PostController extends Controller {
 
             return $this->redirectToRoute('post', array('id'=>$post->getId()));
         }
-        return $this->render('newPost.html.twig', array(
+        return $this->render('new.html.twig', array(
                     'form' => $form->createView()
         ));
     }
