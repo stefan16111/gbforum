@@ -15,10 +15,10 @@ class ThreadType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('content')
-//            ->add('category', EntityType::class, array(
-//                'class' => 'AppBundle\Entity\Topic',
-//                'choice_label' => 'name'
-//            ) )
+            ->add('topic', EntityType::class, array(
+                'class' => 'AppBundle\Entity\Topic',
+                'choice_label' => 'name'
+            ) )
         ;
     }
 

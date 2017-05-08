@@ -19,12 +19,12 @@
         </ul>
     </nav>
 
-    <div class="main_contaier">
+    <div class="category_contaier">
         {% for category in categories %}
-            <ul class="category">  
-                <li><a href="{{ path('allTopicCategory', {'id': category.id}) }}">{{ category.name }}</a>
+            <ul>  
+                <li class="category_li"><a href="{{ path('show_category', {'id': category.id}) }}">{{ category.name }}</a>
                     {% for topic in category.topics %}
-                        <ul class="topic">  
+                        <ul class="topic_li">  
                             <li><a href="{{ path('allTopicCategory', {'id': topic.id}) }}">{{ topic.name }}</a></li>
                         </ul> 
                     {% endfor %}

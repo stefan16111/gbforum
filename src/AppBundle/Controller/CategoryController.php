@@ -33,6 +33,17 @@ class CategoryController extends Controller {
         ));
     }
 
+    /**
+     * @Route("/showCategory/{id}", name="show_category")
+     */
+    public function showCategoryAction($id) {
+        
+        $showCategory = $this->getDoctrine()->getRepository('AppBundle:Category')->find($id);
+        
+        return $this->render('showCategory.html.twig', array(
+            'showCategory' => $showCategory
+        ));
+    }
 }
 
 
