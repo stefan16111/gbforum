@@ -25,7 +25,7 @@
                 <li class="category_li"><a href="{{ path('show_category', {'id': category.id}) }}">{{ category.name }}</a>
                     {% for topic in category.topics %}
                         <ul class="topic_li">  
-                            <li><a href="{{ path('allTopicCategory', {'id': topic.id}) }}">{{ topic.name }}</a></li>
+                            <li><a href="{{ path('allThreadsTopic', {'id': topic.id}) }}">{{ topic.name }}</a></li>
                         </ul> 
                     {% endfor %}
                 </li>

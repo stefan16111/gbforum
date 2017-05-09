@@ -1,8 +1,11 @@
 <div class="thread_contaier">
-    {{dump(topics)}}
-    {% for thread in topics %}
+    {% for thread in threads %}
         <ul class="thread">  
             <li>{{ thread.name }}</li>
+            {{thread.topic.id}}
         </ul> 
     {% endfor %}
+</div>
+<div>
+    <a href="{{ path('thread_new', {'id' : id})}}">Nowy</a>
 </div>

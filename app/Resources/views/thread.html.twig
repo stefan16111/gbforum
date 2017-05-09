@@ -1,8 +1,6 @@
-<div class="thread_contaier">
-    {{dump(thread)}}
-{#    {% for thread in thread %}
-        <ul class="thread">  
-            <li>{{ thread.name }}</li>
-        </ul> 
-    {% endfor %}#}
-</div>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+
+<input type="submit" value="Dodaj"
+       class="btn btn-default pull-right" />
+{{ form_end(form) }}
